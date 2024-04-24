@@ -1,4 +1,18 @@
 - commits:
+    - subject: Publish kernel binaries as OCI container images
+      hash: 5436d9e1b2e3868116c9c45db6739a05086ce0ab
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.1.0
+  title: ""
+  date: 2024-04-24T16:23:51.510Z
+- commits:
     - subject: Update alpine Docker tag to v3.19
       hash: 537d960de0062277ceb2e94b09099f61f6b50e61
       body: |
