@@ -18,8 +18,8 @@ RUN apt-get update \
     libelf-dev \
     libncurses-dev \
     libssl-dev \
-    lz4 \
     vim-tiny \
+    zstd \
     && rm -rf /var/lib/apt/lists/*
 
 ARG KERNEL_BRANCH=5.10
@@ -38,10 +38,14 @@ RUN ln -sf "microvm-kernel-$(uname -m)-${KERNEL_BRANCH}.config" .config
 ###############################################
 
 FROM linux.git AS vmlinux-arm64
-RUN make Image && lz4 -9 ./arch/arm64/boot/Image ./vmlinux.bin.lz4
+RUN make Image
+# hadolint ignore=DL3059
+RUN zstd -9 arch/arm64/boot/Image -o vmlinux.bin.zst
 
 FROM linux.git AS vmlinux-amd64
-RUN make vmlinux && lz4 -9 ./vmlinux ./vmlinux.bin.lz4
+RUN make vmlinux
+# hadolint ignore=DL3059
+RUN zstd -9 vmlinux -o vmlinux.bin.zst
 
 # hadolint ignore=DL3006
 FROM vmlinux-${TARGETARCH} AS vmlinux
@@ -50,4 +54,4 @@ FROM vmlinux-${TARGETARCH} AS vmlinux
 
 FROM scratch AS vmlinux-out
 
-COPY --from=vmlinux /src/vmlinux.bin.lz4 /vmlinux.bin.lz4
+COPY --from=vmlinux /src/vmlinux.bin.zst /vmlinux.bin.zst
