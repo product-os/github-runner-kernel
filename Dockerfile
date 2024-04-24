@@ -1,5 +1,5 @@
 # ARG TEST_IMAGE=debian:bullseye-slim
-ARG TEST_IMAGE=alpine:3.18
+ARG TEST_IMAGE=alpine:3.19
 # ARG TEST_IMAGE=ubuntu:jammy
 
 FROM debian:bullseye-slim AS linux.git
