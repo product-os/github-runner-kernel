@@ -30,4 +30,4 @@ jobs:
           "linux/arm64": ["self-hosted","ARM64"]
         }
       docker_images: ghcr.io/product-os/github-runner-kernel
-      bake_targets: v5-10,v6-1
+      bake_targets: default,linux61

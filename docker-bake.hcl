@@ -13,14 +13,14 @@ target "default" {
   }
 }
 
-target "v5-10" {
+target "linux510" {
   inherits = ["default"]
   args = {
     KERNEL_BRANCH = "5.10"
   }
 }
 
-target "v6-1" {
+target "linux61" {
   inherits = ["default"]
   args = {
     KERNEL_BRANCH = "6.1"
