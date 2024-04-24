@@ -74,7 +74,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # renovate: datasource=github-releases depName=firecracker-microvm/firecracker
-ARG FIRECRACKER_VERSION=v1.4.1
+ARG FIRECRACKER_VERSION=v1.7.0
 ARG FIRECRACKER_URL=https://github.com/firecracker-microvm/firecracker/releases/download/${FIRECRACKER_VERSION}
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
