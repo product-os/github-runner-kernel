@@ -31,28 +31,22 @@ COPY vmlinux/${KERNEL_BRANCH}/*.patch ./
 
 RUN git apply -v ./*.patch
 
+COPY vmlinux/${KERNEL_BRANCH}/*.config ./
+
+RUN ln -sf "microvm-kernel-$(uname -m)-${KERNEL_BRANCH}.config" .config
+
 ###############################################
 
-FROM linux.git AS vmconfig-arm64
-ARG KERNEL_BRANCH=5.10
-COPY vmlinux/${KERNEL_BRANCH}/microvm-kernel-arm64-${KERNEL_BRANCH}.config ./.config
-FROM vmconfig-arm64 AS vmlinux-arm64
+FROM linux.git AS vmlinux-arm64
 RUN make Image && lz4 -9 ./arch/arm64/boot/Image ./vmlinux.bin.lz4
 
-###############################################
-FROM linux.git AS vmconfig-amd64
-ARG KERNEL_BRANCH=5.10
-COPY vmlinux/${KERNEL_BRANCH}/microvm-kernel-x86_64-${KERNEL_BRANCH}.config ./.config
-FROM vmconfig-amd64 AS vmlinux-amd64
+FROM linux.git AS vmlinux-amd64
 RUN make vmlinux && lz4 -9 ./vmlinux ./vmlinux.bin.lz4
-
-###############################################
-
-# hadolint ignore=DL3006
-FROM vmconfig-${TARGETARCH} AS vmconfig
 
 # hadolint ignore=DL3006
 FROM vmlinux-${TARGETARCH} AS vmlinux
+
+###############################################
 
 FROM scratch AS vmlinux-out
 
