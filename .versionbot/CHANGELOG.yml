@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update alpine Docker tag to v3.19
+      hash: 537d960de0062277ceb2e94b09099f61f6b50e61
+      body: |
+        Update alpine from 3.18 to 3.19
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 0.0.41
+  title: ""
+  date: 2024-04-24T13:03:44.698Z
+- commits:
     - subject: Add support for kernel 6.1
       hash: cf2340ece06b4f18e625763568ccd3dc20823839
       body: |
