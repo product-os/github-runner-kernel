@@ -2,7 +2,7 @@ version: "2.4"
 
 services:
   sut:
-    image: alpine:3.18
+    image: alpine:3.19
     environment:
       DOCKER_HOST: unix:///var/run/docker.sock
       COMPOSE_PROJECT_NAME: ${COMPOSE_PROJECT_NAME:-container-jail}
