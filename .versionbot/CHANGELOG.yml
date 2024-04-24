@@ -1,4 +1,21 @@
 - commits:
+    - subject: Refactor build stages and Makefile
+      hash: d5259d7bf59fd33eaddc28142aea07f7008a3e26
+      body: |
+        Flatten vmconfig stages into linux.git and use
+        aarch64 over arm64 to allow use of uname -m to identify
+        the target config files.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.2.0
+  title: ""
+  date: 2024-04-24T19:32:50.156Z
+- commits:
     - subject: Publish kernel binaries as OCI container images
       hash: 5436d9e1b2e3868116c9c45db6739a05086ce0ab
       body: ""
