@@ -1,7 +1,3 @@
-# ARG TEST_IMAGE=debian:bullseye-slim
-ARG TEST_IMAGE=alpine:3.19
-# ARG TEST_IMAGE=ubuntu:jammy
-
 FROM debian:bullseye-slim AS linux.git
 
 WORKDIR /src
@@ -58,91 +54,6 @@ FROM vmconfig-${TARGETARCH} AS vmconfig
 # hadolint ignore=DL3006
 FROM vmlinux-${TARGETARCH} AS vmlinux
 
-###############################################
+FROM scratch AS vmlinux-out
 
-FROM debian:bullseye-slim AS firecracker
-
-WORKDIR /src
-
-ARG DEBIAN_FRONTEND=noninteractive
-
-# hadolint ignore=DL3008
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# renovate: datasource=github-releases depName=firecracker-microvm/firecracker
-ARG FIRECRACKER_VERSION=v1.4.1
-ARG FIRECRACKER_URL=https://github.com/firecracker-microvm/firecracker/releases/download/${FIRECRACKER_VERSION}
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-RUN curl -fsSL -O "${FIRECRACKER_URL}/firecracker-${FIRECRACKER_VERSION}-$(uname -m).tgz" \
-    && curl -fsSL "${FIRECRACKER_URL}/firecracker-${FIRECRACKER_VERSION}-$(uname -m).tgz.sha256.txt" | sha256sum -c - \
-    && tar -xzf "firecracker-${FIRECRACKER_VERSION}-$(uname -m).tgz" --strip-components=1 \
-    && for bin in *-"$(uname -m)" ; do install -v "${bin}" "/usr/local/bin/$(echo "${bin}" | sed -rn 's/(.+)-.+-.+/\1/p')" ; done \
-    && rm "firecracker-${FIRECRACKER_VERSION}-$(uname -m).tgz"
-
-###############################################
-
-FROM debian:bullseye-slim AS jailer
-
-WORKDIR /usr/src/app
-
-ARG DEBIAN_FRONTEND=noninteractive
-
-# hadolint ignore=DL3008
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-    bridge-utils \
-    ca-certificates \
-    curl \
-    e2fsprogs \
-    file \
-    gettext \
-    ipcalc \
-    iproute2 \
-    iptables \
-    jq \
-    lz4 \
-    procps \
-    rsync \
-    tcpdump \
-    uuid-runtime \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY --from=firecracker /usr/local/bin/* /usr/local/bin/
-COPY --from=vmlinux /src/vmlinux.bin.lz4 /jail/boot/vmlinux.bin.lz4
-
-RUN addgroup --system firecracker \
-    && adduser --system firecracker --ingroup firecracker \
-    && chown -R firecracker:firecracker ./
-
-RUN firecracker --version \
-    && jailer --version
-
-COPY overlay ./overlay
-COPY start.sh config.json ./
-
-RUN chmod +x start.sh overlay/sbin/*
-
-ENTRYPOINT [ "/usr/src/app/start.sh" ]
-
-###############################################
-
-# hadolint ignore=DL3006
-FROM ${TEST_IMAGE} AS sut-rootfs
-
-COPY test/ /test/
-
-RUN chmod +x /test/*.sh && /test/setup.sh
-
-FROM jailer AS sut
-
-COPY --from=sut-rootfs / /usr/src/app/rootfs/
-
-CMD [ "/test/healthcheck.sh" ]
-
-#dev-cmd-live="/test/healthcheck.sh ; sleep infinity"
+COPY --from=vmlinux /src/vmlinux.bin.lz4 /vmlinux.bin.lz4
