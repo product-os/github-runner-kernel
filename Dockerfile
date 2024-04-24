@@ -27,11 +27,11 @@ ARG KERNEL_BRANCH=5.10
 RUN git clone --depth 1 -c advice.detachedHead=false \
     --branch "v${KERNEL_BRANCH}" https://github.com/torvalds/linux.git .
 
-COPY vmlinux/${KERNEL_BRANCH}/*.patch ./
+COPY patches/${KERNEL_BRANCH}/*.patch ./
 
 RUN git apply -v ./*.patch
 
-COPY vmlinux/${KERNEL_BRANCH}/*.config ./
+COPY config/${KERNEL_BRANCH}/*.config ./
 
 RUN ln -sf "microvm-kernel-$(uname -m)-${KERNEL_BRANCH}.config" .config
 
