@@ -1,4 +1,18 @@
 - commits:
+    - subject: Separate patches and configs, and move Makefile to root
+      hash: 79d592c1d7e1822018f825577c69733b88490ec8
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.2.1
+  title: ""
+  date: 2024-04-24T20:25:48.250Z
+- commits:
     - subject: Refactor build stages and Makefile
       hash: d5259d7bf59fd33eaddc28142aea07f7008a3e26
       body: |
