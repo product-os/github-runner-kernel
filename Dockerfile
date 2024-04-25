@@ -38,12 +38,12 @@ RUN ln -sf "microvm-kernel-$(uname -m)-${KERNEL_BRANCH}.config" .config
 ###############################################
 
 FROM linux.git AS vmlinux-arm64
-RUN make Image
+RUN make Image -j"$(nproc)"
 # hadolint ignore=DL3059
 RUN zstd -9 arch/arm64/boot/Image -o vmlinux.bin.zst
 
 FROM linux.git AS vmlinux-amd64
-RUN make vmlinux
+RUN make vmlinux -j"$(nproc)"
 # hadolint ignore=DL3059
 RUN zstd -9 vmlinux -o vmlinux.bin.zst
 
