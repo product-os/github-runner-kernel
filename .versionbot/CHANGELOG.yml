@@ -1,4 +1,18 @@
 - commits:
+    - subject: Switch to zstd for compression
+      hash: 404a1e0364dfecd8015bb8e018ff668da2ee3d49
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.0
+  title: ""
+  date: 2024-04-25T00:25:36.874Z
+- commits:
     - subject: Separate patches and configs, and move Makefile to root
       hash: 79d592c1d7e1822018f825577c69733b88490ec8
       body: ""
