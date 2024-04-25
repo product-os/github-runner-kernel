@@ -1,4 +1,18 @@
 - commits:
+    - subject: Enable parallel execution of recipes
+      hash: 0fd4e0b2e54692570d157826cfff58bcc1e9fea5
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.1
+  title: ""
+  date: 2024-04-25T00:49:42.112Z
+- commits:
     - subject: Switch to zstd for compression
       hash: 404a1e0364dfecd8015bb8e018ff668da2ee3d49
       body: ""
