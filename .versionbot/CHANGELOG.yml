@@ -1,4 +1,19 @@
 - commits:
+    - subject: Emulate CP15 Barrier instructions
+      hash: 7160d87d2459a0885f97f5eac8046e6930497719
+      body: |
+        See: https://cateee.net/lkddb/web-lkddb/CP15_BARRIER_EMULATION.html
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.2
+  title: ""
+  date: 2024-05-01T17:34:37.362Z
+- commits:
     - subject: Enable parallel execution of recipes
       hash: 0fd4e0b2e54692570d157826cfff58bcc1e9fea5
       body: ""
