@@ -26,8 +26,8 @@ jobs:
     with:
       docker_runs_on: >
         {
-          "linux/amd64": ["self-hosted","X64"],
-          "linux/arm64": ["self-hosted","ARM64"]
+          "linux/amd64": ["actuated-16cpu-32gb"],
+          "linux/arm64": ["actuated-arm64-16cpu-32gb"]
         }
       docker_images: ghcr.io/product-os/github-runner-kernel
       bake_targets: default,linux61
