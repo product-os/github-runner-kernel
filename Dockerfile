@@ -33,7 +33,7 @@ RUN git apply -v ./*.patch
 
 COPY config/${KERNEL_BRANCH}/*.config ./
 
-RUN ln -sf "microvm-kernel-$(uname -m)-${KERNEL_BRANCH}.config" .config
+RUN cp "microvm-kernel-$(uname -m)-${KERNEL_BRANCH}.config" .config
 
 ###############################################
 

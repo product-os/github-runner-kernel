@@ -32,7 +32,7 @@ vmlinux:
 # vmconfig targets are interactive, so we need to run them in a container
 vmconfig: linux.git
 	-docker rm -f linux.git
-	docker run --name linux.git --platform $(PLATFORM) $(IMAGE_TAG) make $(TARGET)
+	docker run -it --name linux.git --platform $(PLATFORM) $(IMAGE_TAG) make $(TARGET)
 	docker cp linux.git:/src/.config $(CONFIG_FILE)
 
 menuconfig:
