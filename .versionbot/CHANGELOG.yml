@@ -1,4 +1,19 @@
 - commits:
+    - subject: Enable netfilter comment matching
+      hash: ef5a66951599dc64bf2920d896c36c6d9eda8df6
+      body: |
+        See: https://www.kernelconfig.io/config_ip_nf_match_comment
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.3
+  title: ""
+  date: 2024-05-09T15:38:32.790Z
+- commits:
     - subject: Emulate CP15 Barrier instructions
       hash: 7160d87d2459a0885f97f5eac8046e6930497719
       body: |
