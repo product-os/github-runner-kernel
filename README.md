@@ -13,3 +13,34 @@ Forked from [here](https://github.com/balena-io-experimental/container-jail).
 ## Contributing
 
 Please open an issue or submit a pull request with any features, fixes, or changes.
+
+### Enabling Kernel Features
+
+In the root of this project is a `Makefile` to streamline changing kernel settings via `menuconfig`.
+
+Linux `menuconfig` is a graphical, menu-driven configuration system for the Linux kernel, which is part of the larger set of Linux kernel configuration tools (also including `xconfig`, `gconfig`, and others). It provides a user-friendly interface for configuring various kernel options and features, allowing users to enable or disable kernel components, set kernel parameters, and customize the kernel according to their needs. `menuconfig` is typically invoked via the `make menuconfig` command from the root of the Linux kernel source directory.
+
+Here's a step-by-step explanation of how it works:
+
+1. **Launch**: You launch `menuconfig` by running `make menuconfig` in the terminal, from the root directory of the Linux kernel source code.
+2. **Navigate**: The interface is divided into numerous categories representing different parts of the kernel. You can navigate through these categories using arrow keys.
+3. **Search**: You can search for specific options by pressing `/` and typing the search query. `menuconfig` will then list matches, and you can jump directly to an option by selecting it from the search results.
+4. **Modify**: To modify an option, you navigate to it and then toggle it on or off (or into module mode, if applicable) by pressing the appropriate key (`y` for yes/enabled, `n` for no/disabled).
+5. **Save** and Exit: After making your changes, you can save the new configuration by exiting menuconfig and saving the new `.config` file when prompted.
+
+For this project we need to perform the above steps 4 times to enable the desired feature in each kernel variant.
+
+```bash
+# enable feature(s) for current firecracker kernels
+make menuconfig ARCH=arm64 KERNEL_BRANCH=5.10
+make menuconfig ARCH=x86_64 KERNEL_BRANCH=5.10
+
+# enable feature(s) for future firecracker kernels
+make menuconfig ARCH=arm64 KERNEL_BRANCH=6.1
+make menuconfig ARCH=x86_64 KERNEL_BRANCH=6.1
+```
+
+The Makefile in this project will build a Docker container with the dependencies and the kernel sources,
+then run it interactively to execute `make menuconfig`.
+
+You'll need Docker with buildkit support, and on Linux you'll need [QEMU binfmt](https://github.com/multiarch/qemu-user-static) registered for non-native architecture emulation.
