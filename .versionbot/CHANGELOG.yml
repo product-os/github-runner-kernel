@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add testing steps to readme
+      hash: 3cbe499f3902cbf244d2edeb968bd96be61fea97
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.6
+  title: ""
+  date: 2024-05-16T09:59:43.527Z
+- commits:
     - subject: Update contributing guidelines in readme
       hash: 5e9fa1626eab8fd7f57e8690e6c3c3e9d0c15f58
       body: ""
