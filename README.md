@@ -44,3 +44,32 @@ The Makefile in this project will build a Docker container with the dependencies
 then run it interactively to execute `make menuconfig`.
 
 You'll need Docker with buildkit support, and on Linux you'll need [QEMU binfmt](https://github.com/multiarch/qemu-user-static) registered for non-native architecture emulation.
+
+### Testing
+
+This project does not contain any tests,
+and instead relies on the functional tests in [github-runner-vm](https://github.com/product-os/github-runner-vm).
+
+1. **VM Tests PR:**
+   - Navigate to [github-runner-vm](https://github.com/product-os/github-runner-vm).
+   - Create a new draft PR to test the functionality enabled by your required kernel feature (see [example](https://github.com/product-os/github-runner-vm/pull/26)).
+   - Confirm that the test(s) fail without the kernel feature.
+
+2. **Kernel Feature PR:**
+   - Open a draft PR in this project to enable the new kernel feature(s) after confirming the test(s) fail without it.
+   - The draft PR will publish a draft release of the kernel container image.
+
+3. **Update Kernel Release Tag:**
+   - Update the [kernel release tag](https://github.com/product-os/github-runner-vm/blob/main/Dockerfile#L4) to the draft kernel tag on the PR with the new test(s).
+   - Verify that the new test(s) pass with the draft kernel release.
+
+4. **Code Review and Merge:**
+   - If the tests pass, seek a code review for the kernel PR and merge the kernel PR after approval.
+
+5. **Renovate Update:**
+   - Allow Renovate an hour or two to automatically bump the kernel tag in the `github-runner-vm` repository after the kernel PR merge.
+
+6. **Rebase and Final Review:**
+   - Rebase your tests PR in the `github-runner-vm` project.
+   - Confirm that the test(s) still pass.
+   - Seek a final code review and merge your tests PR.
