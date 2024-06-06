@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update zstd compression flags
+      hash: acb080f3704e6dd2bae04f69ff30e9f834ef6fba
+      body: |
+        We are still using compression level 9 but we are
+        suppressing the progress bar and removing source files.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.7
+  title: ""
+  date: 2024-06-06T20:09:13.490Z
+- commits:
     - subject: Add testing steps to readme
       hash: 3cbe499f3902cbf244d2edeb968bd96be61fea97
       body: ""
