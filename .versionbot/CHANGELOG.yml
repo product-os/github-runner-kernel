@@ -1,4 +1,20 @@
 - commits:
+    - subject: Enable NFS server support
+      hash: dc771c844c45733f5594c3395bbb3e2ebf3174e8
+      body: |
+        This is needed for CI of services that provide NFS servers as
+        part of their compose stack.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.3.8
+  title: ""
+  date: 2024-06-26T13:35:59.890Z
+- commits:
     - subject: Update zstd compression flags
       hash: acb080f3704e6dd2bae04f69ff30e9f834ef6fba
       body: |
