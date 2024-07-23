@@ -1,4 +1,15 @@
 - commits:
+    - subject: Switch to self-hosted
+      hash: f32e0f81d74c95587db3d0768f239985721ac79d
+      body: ""
+      footer:
+        change-type: patch
+      author: Anton Belodedenko
+      nested: []
+  version: 0.3.9
+  title: ""
+  date: 2024-07-23T16:50:56.041Z
+- commits:
     - subject: Enable NFS server support
       hash: dc771c844c45733f5594c3395bbb3e2ebf3174e8
       body: |
