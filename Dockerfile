@@ -22,7 +22,7 @@ RUN apt-get update \
     zstd \
     && rm -rf /var/lib/apt/lists/*
 
-ARG KERNEL_BRANCH=5.10
+ARG KERNEL_BRANCH=6.1
 
 RUN git clone --depth 1 -c advice.detachedHead=false \
     --branch "v${KERNEL_BRANCH}" https://github.com/torvalds/linux.git .
