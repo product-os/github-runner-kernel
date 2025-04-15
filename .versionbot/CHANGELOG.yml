@@ -1,4 +1,33 @@
 - commits:
+    - subject: Revert "Enable NFS server support"
+      hash: 731e00a27814bdf00ae79144a707dec743936c02
+      body: |
+        This reverts commit dc771c844c45733f5594c3395bbb3e2ebf3174e8.
+
+        We don't use this feature in the runners anymore.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Build kernel branch 6.1 by default
+      hash: f13e2efa247ace30e9f08982ad9bc79bff12d0cd
+      body: |
+        This also removes the 'latest' tag and adds 'linux510'
+        for compatibility.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.4.0
+  title: ""
+  date: 2025-04-15T15:50:30.642Z
+- commits:
     - subject: Explicitly set GH_TOKEN permissions
       hash: f61ca23e2d3e5015c3241b7be8c5d8f88d1fa09f
       body: ""
