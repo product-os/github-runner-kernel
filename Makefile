@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 ARCH ?= $(shell uname -m)
 KERNEL_BRANCH ?= 5.10
 MAKEFILE_DIR := $(realpath $(shell dirname $(firstword $(MAKEFILE_LIST))))
