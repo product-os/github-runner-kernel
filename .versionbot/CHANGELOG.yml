@@ -1,4 +1,75 @@
 - commits:
+    - subject: Stop building legacy 5.10 kernel
+      hash: 69b5f5c47fab67ffa37db2fe1b1971b7cf57b3df
+      body: |
+        This kernel no longer builds on Debian bookworm with GCC12 - it is also
+        no longer used.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: "configs: 6.1: add zram support"
+      hash: 8813b397cff37e92a06b7fccd4a748c5f0bc98e6
+      body: |
+        This is required to run some new tests on the OS automation suite.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: "config: 6.1: adapt to building with Debian 12"
+      hash: 1f527faefadd824f873b6d3ab2e2f58dc2bf02e8
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: "Dockerfile: update to bookworm"
+      hash: a3474286b87980bf9bface374f14ad73efa0fdba
+      body: >
+        Debian bullseye kept segfaulting:
+
+        ```
+
+        101.1  installed libc-bin package post-installation script subprocess
+        returned error exit status 139
+
+        101.1 Processing triggers for ca-certificates (20210119) ...
+
+        101.3 Updating certificates in /etc/ssl/certs...
+
+        112.7 0 added, 0 removed; done.
+
+        112.7 Running hooks in /etc/ca-certificates/update.d...
+
+        112.7 done.
+
+        112.8 Errors were encountered while processing:
+
+        112.8  libc-bin
+
+        112.9 E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+        ```
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 0.5.0
+  title: ""
+  date: 2025-06-11T14:12:39.015Z
+- commits:
     - subject: Revert "Enable NFS server support"
       hash: 731e00a27814bdf00ae79144a707dec743936c02
       body: |
