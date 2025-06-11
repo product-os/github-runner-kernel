@@ -1,5 +1,5 @@
 variable "KERNEL_BRANCH" {
-  default = "5.10"
+  default = "6.1"
 }
 
 target "default" {
