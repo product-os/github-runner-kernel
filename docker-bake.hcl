@@ -1,5 +1,5 @@
 variable "KERNEL_BRANCH" {
-  default = "5.10"
+  default = "6.1"
 }
 
 target "default" {
@@ -10,13 +10,6 @@ target "default" {
   target = "vmlinux-out"
   args = {
     KERNEL_BRANCH = KERNEL_BRANCH
-  }
-}
-
-target "linux510" {
-  inherits = ["default"]
-  args = {
-    KERNEL_BRANCH = "5.10"
   }
 }
 

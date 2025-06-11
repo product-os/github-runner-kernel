@@ -32,10 +32,6 @@ For this project we need to perform the above steps 4 times to enable the desire
 
 ```bash
 # enable feature(s) for current firecracker kernels
-make menuconfig ARCH=arm64 KERNEL_BRANCH=5.10
-make menuconfig ARCH=x86_64 KERNEL_BRANCH=5.10
-
-# enable feature(s) for future firecracker kernels
 make menuconfig ARCH=arm64 KERNEL_BRANCH=6.1
 make menuconfig ARCH=x86_64 KERNEL_BRANCH=6.1
 ```
