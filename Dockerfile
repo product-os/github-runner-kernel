@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim AS linux.git
+FROM debian:bookworm-slim AS linux.git
 
 WORKDIR /src
 

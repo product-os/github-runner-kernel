@@ -1,5 +1,6 @@
+SHELL := /bin/bash
 ARCH ?= $(shell uname -m)
-KERNEL_BRANCH ?= 5.10
+KERNEL_BRANCH ?= 6.1
 MAKEFILE_DIR := $(realpath $(shell dirname $(firstword $(MAKEFILE_LIST))))
 
 # normalize machine to docker platform
