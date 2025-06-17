@@ -1,4 +1,33 @@
 - commits:
+    - subject: "configs: 6.1: add zram support"
+      hash: 65a61ad96a7f435c2e6eeca642741dfef5e803e1
+      body: >
+        This is required to run some new tests on the OS automation suite.git gui
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: 'Revert "configs: 6.1: add zram support"'
+      hash: 65cb59a0fff241ad2870cae55b21303f83c7e1a2
+      body: |
+        This reverts commit 8813b397cff37e92a06b7fccd4a748c5f0bc98e6.
+
+        This actually adds ramdisk support, not zram support. My brain
+        short circuited.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 0.6.0
+  title: ""
+  date: 2025-06-17T09:31:43.171Z
+- commits:
     - subject: Stop building legacy 5.10 kernel
       hash: 69b5f5c47fab67ffa37db2fe1b1971b7cf57b3df
       body: |
