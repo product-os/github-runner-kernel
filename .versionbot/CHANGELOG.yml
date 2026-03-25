@@ -1,4 +1,26 @@
 - commits:
+    - subject: Update product-os/flowzone digest to eb703ea
+      hash: be773944a70e6ad09945cdce355d6348364a6f30
+      body: |
+        Update product-os/flowzone
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+    - subject: Pin product-os/flowzone action to 54776e8
+      hash: 18800e5ac6874d65ecc01c269e2629c2e9a003c2
+      body: |
+        Update product-os/flowzone
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.1
+  title: ""
+  date: 2026-03-25T20:51:24.160Z
+- commits:
     - subject: "configs: 6.1: add zram support"
       hash: 65a61ad96a7f435c2e6eeca642741dfef5e803e1
       body: >
