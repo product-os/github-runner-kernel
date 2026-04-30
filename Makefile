@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 ARCH ?= $(shell uname -m)
 KERNEL_BRANCH ?= 6.1
+KERNEL_VERSION ?= 6.1.170
 MAKEFILE_DIR := $(realpath $(shell dirname $(firstword $(MAKEFILE_LIST))))
 
 # normalize machine to docker platform
@@ -19,6 +20,7 @@ linux.git:
 	docker build . \
 		--platform $(PLATFORM) \
 		--build-arg KERNEL_BRANCH=$(KERNEL_BRANCH) \
+		--build-arg KERNEL_VERSION=$(KERNEL_VERSION) \
 		--target linux.git \
 		--output type=image,name=$(IMAGE_TAG)
 
@@ -27,6 +29,7 @@ vmlinux:
 	docker build . \
 		--platform $(PLATFORM) \
 		--build-arg KERNEL_BRANCH=$(KERNEL_BRANCH) \
+		--build-arg KERNEL_VERSION=$(KERNEL_VERSION) \
 		--target vmlinux-out \
 		--output type=local,dest=vmlinux
 
