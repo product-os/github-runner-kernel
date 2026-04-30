@@ -1,4 +1,36 @@
 - commits:
+    - subject: Bump kernel base from v6.1 to v6.1.170
+      hash: 07d0e7de67ccc411d21ca33331bb2340833a84cf
+      body: |
+        Pull in ~170 stable releases of security and bug fixes accumulated
+        since the original v6.1 (December 2022) tag. Notable: the build was
+        missing every linux-6.1.y backport, including a long backlog of CVE
+        fixes unrelated to AF_ALG.
+
+        Introduces KERNEL_VERSION (defaulting to 6.1.170) as the actual git
+        tag to clone, while KERNEL_BRANCH (6.1) continues to identify the
+        patches/ and config/ subdirectories — so future stable bumps only
+        need a single value change.
+
+        Notes on CVE-2026-31431 ("Copy Fail", algif_aead): the upstream fix
+        (mainline a664bf3d603d) is currently in stable-review for 6.1.y
+        (Eric Biggers' [PATCH 6.1 0/9] AF_ALG fixes, lore 20260430062731)
+        and not yet in any 6.1.y release. This kernel build is unaffected
+        in practice because CONFIG_CRYPTO_USER_API_AEAD (and the rest of
+        CONFIG_CRYPTO_USER_API_*) is already =n in both arch configs, so
+        the algif_aead module is never compiled in. Re-bump to 6.1.171+ once
+        the series lands upstream.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.6.14
+  title: ""
+  date: 2026-04-30T13:31:21.663Z
+- commits:
     - subject: Revert flowzone pinning to master
       hash: 85802930eed61e7196ae747563b6ecd36efb211d
       body: ""
