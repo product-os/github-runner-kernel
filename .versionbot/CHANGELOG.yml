@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin debian Docker tag to 67b30a6
+      hash: 59fc09e681b1eb5b02fa2273dc9d025c8d5d090b
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.15
+  title: ""
+  date: 2026-05-12T17:37:44.807Z
+- commits:
     - subject: Bump kernel base from v6.1 to v6.1.170
       hash: 07d0e7de67ccc411d21ca33331bb2340833a84cf
       body: |
