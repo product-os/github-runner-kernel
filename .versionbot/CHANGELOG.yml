@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:bookworm-slim Docker digest to 3783cc0
+      hash: cd7a03e8691013988c1059d27ad752331345afbe
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.24
+  title: ""
+  date: 2026-09-19T02:56:58.618Z
+- commits:
     - subject: Update dependency flowzonify to v0.4.0
       hash: 9d3a619737494eae1836e4a92e947b445c6432b1
       body: |
