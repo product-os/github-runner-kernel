@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:bookworm-slim Docker digest to 99c0b25
+      hash: 5b268ec6d2f4317a6310445ea59cda34e93b656d
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.27
+  title: ""
+  date: 2026-10-28T02:56:24.794Z
+- commits:
     - subject: Update debian:bookworm-slim Docker digest to 7ff6ba3
       hash: 002c17cb8554a50e9ebadcacad78e8779cb100be
       body: |
