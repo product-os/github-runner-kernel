@@ -23,7 +23,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 ARG KERNEL_BRANCH=6.1
-ARG KERNEL_VERSION=6.1.170
+ARG KERNEL_VERSION=6.1.191
 
 RUN git clone --depth 1 -c advice.detachedHead=false \
     --branch "v${KERNEL_VERSION}" https://github.com/gregkh/linux.git .
