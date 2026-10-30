@@ -1,4 +1,22 @@
 - commits:
+    - subject: Let Renovate bump the 6.1 stable kernel version
+      hash: ccfab0e1b560660bca14c00beb5148073d3dd8ee
+      body: |
+        Annotate the KERNEL_VERSION sites in the Dockerfile, Makefile and
+        docker-bake.hcl so Renovate tracks gregkh/linux tags, restricted to
+        6.1.x. Patch bumps automerge via the org preset, since
+        github-runner-vm CI boots the kernel before it reaches the runners.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.6.29
+  title: ""
+  date: 2026-10-30T14:00:07.060Z
+- commits:
     - subject: Bump kernel to v6.1.191 for CVE-2026-98432
       hash: 02ddd85311b7c6a95b8d726addee52ee708365bb
       body: |
