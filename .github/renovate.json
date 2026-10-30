@@ -1,0 +1,20 @@
+{
+  "extends": ["customManagers:makefileVersions"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)docker-bake\\.hcl$/"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)\\s+[A-Za-z0-9_]+\\s*=\\s*\"(?<currentValue>[^\"]+)\""
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Track 6.1 stable kernel tags (vX.Y.Z). Extracting drops rc tags. The org preset automerges patch bumps. github-runner-vm CI boots the kernel before the image reaches runners.",
+      "matchDepNames": ["gregkh/linux"],
+      "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$",
+      "allowedVersions": "/^6\\.1\\./"
+    }
+  ]
+}

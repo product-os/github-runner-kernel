@@ -23,6 +23,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 ARG KERNEL_BRANCH=6.1
+# renovate: datasource=github-tags depName=gregkh/linux
 ARG KERNEL_VERSION=6.1.191
 
 RUN git clone --depth 1 -c advice.detachedHead=false \
