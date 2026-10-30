@@ -3,7 +3,7 @@ variable "KERNEL_BRANCH" {
 }
 
 variable "KERNEL_VERSION" {
-  default = "6.1.170"
+  default = "6.1.191"
 }
 
 target "default" {
@@ -22,6 +22,6 @@ target "linux61" {
   inherits = ["default"]
   args = {
     KERNEL_BRANCH  = "6.1"
-    KERNEL_VERSION = "6.1.170"
+    KERNEL_VERSION = "6.1.191"
   }
 }
