@@ -3,6 +3,7 @@ variable "KERNEL_BRANCH" {
 }
 
 variable "KERNEL_VERSION" {
+  # renovate: datasource=github-tags depName=gregkh/linux
   default = "6.1.191"
 }
 
@@ -22,6 +23,7 @@ target "linux61" {
   inherits = ["default"]
   args = {
     KERNEL_BRANCH  = "6.1"
+    # renovate: datasource=github-tags depName=gregkh/linux
     KERNEL_VERSION = "6.1.191"
   }
 }
