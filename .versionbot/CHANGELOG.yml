@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency gregkh/linux to v6.1.192
+      hash: aa3c4270adc7acf76f8f5055dff27f015bb098f7
+      body: |
+        Update gregkh/linux from 6.1.191 to 6.1.192
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.31
+  title: ""
+  date: 2026-11-06T18:50:04.712Z
+- commits:
     - subject: Update debian:bookworm-slim Docker digest to 734a72b
       hash: 32de1088633b3e56a3c5692107a379fd5c85f74f
       body: |
