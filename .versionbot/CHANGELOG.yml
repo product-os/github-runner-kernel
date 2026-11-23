@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency gregkh/linux to v6.1.193
+      hash: 08e0370b17c2020dc538270f0d53bc9844395207
+      body: |
+        Update gregkh/linux from 6.1.192 to 6.1.193
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.32
+  title: ""
+  date: 2026-11-23T08:52:05.645Z
+- commits:
     - subject: Update dependency gregkh/linux to v6.1.192
       hash: aa3c4270adc7acf76f8f5055dff27f015bb098f7
       body: |
