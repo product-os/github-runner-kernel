@@ -1,4 +1,25 @@
 - commits:
+    - subject: Pin the kernel source to a commit
+      hash: 77453160807ad3ac9f4579a1ac9bd6bbb0e5d856
+      body: |
+        Record the commit for each gregkh/linux tag next to KERNEL_VERSION in
+        the Dockerfile, Makefile and docker-bake.hcl. The build compares it
+        after the clone and stops before make on a mismatch.
+
+        Renovate now bumps the version and commit together, and no longer
+        automerges gregkh/linux. The PR body has a kernel.org check for the
+        reviewer.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 0.6.34
+  title: ""
+  date: 2026-11-24T21:53:29.772Z
+- commits:
     - subject: Update debian:bookworm-slim Docker digest to e67eeea
       hash: f5a2842842958e331ea9fd6e7e47ebb5fba9e9c5
       body: |
