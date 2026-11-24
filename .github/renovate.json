@@ -3,18 +3,28 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["/(^|/)docker-bake\\.hcl$/"],
+      "description": "Update the kernel tag and its commit together. KERNEL_COMMIT sits between the comment and KERNEL_VERSION so the org dockerfileVersions and makefileVersions presets, which capture no digest, do not also match.",
+      "managerFilePatterns": [
+        "/(^|/)Dockerfile$/",
+        "/(^|/)Makefile$/",
+        "/(^|/)docker-bake\\.hcl$/"
+      ],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)\\s+[A-Za-z0-9_]+\\s*=\\s*\"(?<currentValue>[^\"]+)\""
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+(?:ARG\\s+)?KERNEL_COMMIT\\s*\\??=\\s*\"?(?<currentDigest>[0-9a-f]{40})\"?\\s+(?:ARG\\s+)?KERNEL_VERSION\\s*\\??=\\s*\"?(?<currentValue>[^\"\\s]+)\"?",
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\s+variable \"KERNEL_COMMIT\" \\{\\s+default = \"(?<currentDigest>[0-9a-f]{40})\"\\s+\\}\\s+variable \"KERNEL_VERSION\" \\{\\s+default = \"(?<currentValue>[^\"]+)\""
       ]
     }
   ],
   "packageRules": [
     {
-      "description": "Track 6.1 stable kernel tags (vX.Y.Z). Extracting drops rc tags. The org preset automerges patch bumps. github-runner-vm CI boots the kernel before the image reaches runners.",
+      "description": "Track 6.1 stable kernel tags (vX.Y.Z). Extracting drops rc tags. Never automerge: a reviewer checks the new commit against kernel.org before merge.",
       "matchDepNames": ["gregkh/linux"],
       "extractVersion": "^v(?<version>\\d+\\.\\d+\\.\\d+)$",
-      "allowedVersions": "/^6\\.1\\./"
+      "allowedVersions": "/^6\\.1\\./",
+      "automerge": false,
+      "prBodyNotes": [
+        "Before merge, confirm that kernel.org prints `{{{newDigest}}}`:\n\n```sh\ngit ls-remote https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git 'refs/tags/v{{{newValue}}}^{}'\n```"
+      ]
     }
   ]
 }

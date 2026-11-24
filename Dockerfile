@@ -24,10 +24,17 @@ RUN apt-get update \
 
 ARG KERNEL_BRANCH=6.1
 # renovate: datasource=github-tags depName=gregkh/linux
+ARG KERNEL_COMMIT=1ca1436ccc68275d0b43b6a730b3940fcc46b7c2
 ARG KERNEL_VERSION=6.1.193
 
+# Fail unless the tag resolves to the pinned commit.
 RUN git clone --depth 1 -c advice.detachedHead=false \
-    --branch "v${KERNEL_VERSION}" https://github.com/gregkh/linux.git .
+    --branch "v${KERNEL_VERSION}" https://github.com/gregkh/linux.git . \
+    && actual="$(git rev-parse HEAD)" \
+    && if [ "${actual}" != "${KERNEL_COMMIT}" ]; then \
+        echo "v${KERNEL_VERSION} is ${actual}, expected ${KERNEL_COMMIT}" >&2; \
+        exit 1; \
+    fi
 
 COPY patches/${KERNEL_BRANCH}/*.patch ./
 

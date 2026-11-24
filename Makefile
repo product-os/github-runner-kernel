@@ -2,6 +2,7 @@ SHELL := /bin/bash
 ARCH ?= $(shell uname -m)
 KERNEL_BRANCH ?= 6.1
 # renovate: datasource=github-tags depName=gregkh/linux
+KERNEL_COMMIT ?= 1ca1436ccc68275d0b43b6a730b3940fcc46b7c2
 KERNEL_VERSION ?= 6.1.193
 MAKEFILE_DIR := $(realpath $(shell dirname $(firstword $(MAKEFILE_LIST))))
 
@@ -16,12 +17,15 @@ endif
 
 IMAGE_TAG ?= linux.git:$(MACHINE)-$(KERNEL_BRANCH)
 CONFIG_FILE ?= config/$(KERNEL_BRANCH)/microvm-kernel-$(MACHINE)-$(KERNEL_BRANCH).config
+BUILD_ARGS := \
+	--build-arg KERNEL_BRANCH=$(KERNEL_BRANCH) \
+	--build-arg KERNEL_COMMIT=$(KERNEL_COMMIT) \
+	--build-arg KERNEL_VERSION=$(KERNEL_VERSION)
 
 linux.git:
 	docker build . \
 		--platform $(PLATFORM) \
-		--build-arg KERNEL_BRANCH=$(KERNEL_BRANCH) \
-		--build-arg KERNEL_VERSION=$(KERNEL_VERSION) \
+		$(BUILD_ARGS) \
 		--target linux.git \
 		--output type=image,name=$(IMAGE_TAG)
 
@@ -29,8 +33,7 @@ linux.git:
 vmlinux:
 	docker build . \
 		--platform $(PLATFORM) \
-		--build-arg KERNEL_BRANCH=$(KERNEL_BRANCH) \
-		--build-arg KERNEL_VERSION=$(KERNEL_VERSION) \
+		$(BUILD_ARGS) \
 		--target vmlinux-out \
 		--output type=local,dest=vmlinux
 
