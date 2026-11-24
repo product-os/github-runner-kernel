@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update debian:bookworm-slim Docker digest to e67eeea
+      hash: f5a2842842958e331ea9fd6e7e47ebb5fba9e9c5
+      body: |
+        Update debian
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.6.33
+  title: ""
+  date: 2026-11-24T05:48:11.527Z
+- commits:
     - subject: Update dependency gregkh/linux to v6.1.193
       hash: 08e0370b17c2020dc538270f0d53bc9844395207
       body: |
